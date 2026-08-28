@@ -1,0 +1,73 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800;900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F6F2EA; --ink:#1E1B18; --ink-55:rgba(30,27,24,.55); --ink-15:rgba(30,27,24,.15);
+      --accent:oklch(78% 0.15 55);
+      --display:'Bitter',Georgia,serif; --body:'Public Sans',Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    .card{width:100%; font-family:var(--body);}
+    .thumb{position:relative; width:100%; aspect-ratio:4/3; overflow:hidden; background:var(--tb-bg);}
+    .thumb .b1{position:absolute; width:56%; height:70%; left:-8%; top:8%; background:var(--tb-1);}
+    .thumb .b2{position:absolute; width:38%; height:42%; right:6%; top:16%; background:var(--tb-2);}
+    .thumb .b3{position:absolute; width:30%; height:55%; right:-6%; bottom:-10%; background:var(--tb-3); transform:rotate(9deg);}
+    .tick{position:absolute; width:7px; height:7px; background:var(--ink);}
+    .tick.tl{top:10px; left:10px;}
+    .tick.br{bottom:10px; right:10px;}
+    .tone-ink{--tb-bg:#EEE8DB; --tb-1:#1E1B18; --tb-2:oklch(78% 0.15 55); --tb-3:#C9C2B4;}
+    .tone-accent{--tb-bg:#1E1B18; --tb-1:oklch(78% 0.15 55); --tb-2:#F6F2EA; --tb-3:#3A352E;}
+    .tone-cream{--tb-bg:oklch(78% 0.15 55); --tb-1:#1E1B18; --tb-2:#F6F2EA; --tb-3:#B5672A;}
+    .meta{display:flex; justify-content:space-between; align-items:flex-start; padding-top:20px; border-top:1px solid var(--ink-15); margin-top:20px;}
+    .index{font-family:var(--display); font-weight:700; font-size:13px; color:var(--ink-55);}
+    .title{font-family:var(--display); font-weight:700; font-size:22px; margin-top:6px; color:var(--ink);}
+    .category{font-size:12px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink-55); text-align:right; max-width:140px;}
+  </style>
+</helmet>
+<div class="card">
+  <div class="thumb tone-{{tone}}">
+    <div class="b1"></div>
+    <div class="b2"></div>
+    <div class="b3"></div>
+    <div class="tick tl"></div>
+    <div class="tick br"></div>
+  </div>
+  <div class="meta">
+    <div>
+      <div class="index">{{index}}</div>
+      <div class="title">{{title}}</div>
+    </div>
+    <div class="category">{{category}}</div>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{
+  "index":{"editor":"text","default":"01"},
+  "title":{"editor":"text","default":"[Nombre del cliente]"},
+  "category":{"editor":"text","default":"Identidad de marca"},
+  "tone":{"editor":"enum","default":"ink","options":["ink","accent","cream"]},
+  "$preview":{"width":420,"height":420}
+}'>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      index: this.props.index ?? '01',
+      title: this.props.title ?? '[Nombre del cliente]',
+      category: this.props.category ?? 'Identidad de marca',
+      tone: this.props.tone ?? 'ink',
+    };
+  }
+}
+</script>
+</body>
+</html>

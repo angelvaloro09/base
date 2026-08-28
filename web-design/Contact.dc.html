@@ -1,0 +1,97 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800;900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F6F2EA; --ink:#1E1B18;
+      --ink-70:rgba(30,27,24,.7); --ink-55:rgba(30,27,24,.55); --ink-15:rgba(30,27,24,.15);
+      --accent:oklch(78% 0.15 55);
+      --display:'Bitter',Georgia,serif; --body:'Public Sans',Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--body);}
+    .page{width:1440px;}
+
+    .header{padding:150px 64px 40px; max-width:900px;}
+    .eyebrow{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-55); margin-bottom:26px;}
+    .h1{font-family:var(--display); font-weight:800; font-size:60px; line-height:1.12; letter-spacing:-.01em;}
+    .sub{font-size:18px; line-height:1.6; color:var(--ink-70); margin-top:28px; max-width:520px;}
+
+    .grid{display:grid; grid-template-columns:1fr 1.3fr; gap:80px; padding:80px 64px 160px;}
+
+    .detail-row{display:flex; justify-content:space-between; align-items:baseline; padding:26px 0; border-top:1px solid var(--ink-15);}
+    .detail-row:last-child{border-bottom:1px solid var(--ink-15);}
+    .detail-label{font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-55);}
+    .detail-value{font-family:var(--display); font-weight:600; font-size:19px; text-align:right;}
+
+    .form{display:flex; flex-direction:column; gap:26px;}
+    .field-label{font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-55); margin-bottom:10px; display:block;}
+    .field-input{width:100%; border:none; border-bottom:1px solid var(--ink-15); background:transparent; padding:10px 0; font-family:var(--body); font-size:16px; color:var(--ink); outline:none;}
+    .field-input:focus{border-bottom:1px solid var(--accent);}
+    textarea.field-input{resize:none; min-height:100px; font-family:var(--body);}
+    .btn-primary{align-self:flex-start; margin-top:10px; background:var(--ink); color:var(--bg); border:1px solid var(--ink); padding:16px 32px; font-family:var(--body); font-size:13px; letter-spacing:.06em; text-transform:uppercase; cursor:default;}
+  </style>
+</helmet>
+<div class="page">
+  <dc-import name="Nav" active="contact" hint-size="1440px,80px"></dc-import>
+
+  <div class="header">
+    <div class="eyebrow">Contacto</div>
+    <div class="h1">Empecemos a construir la base de tu marca.</div>
+    <div class="sub">Cuéntanos en qué etapa está tu marca y qué te gustaría que sostenga. Respondemos en menos de 48 horas.</div>
+  </div>
+
+  <div class="grid">
+    <div>
+      <div class="detail-row">
+        <div class="detail-label">Email</div>
+        <div class="detail-value">[hola@basestudio.com]</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Redes</div>
+        <div class="detail-value">Instagram · LinkedIn</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Ubicación</div>
+        <div class="detail-value">[Ciudad, país]</div>
+      </div>
+      <div class="detail-row">
+        <div class="detail-label">Disponibilidad</div>
+        <div class="detail-value">[Próximos proyectos: mes/año]</div>
+      </div>
+    </div>
+    <div class="form">
+      <div>
+        <span class="field-label">Nombre</span>
+        <input class="field-input" type="text" placeholder="Tu nombre">
+      </div>
+      <div>
+        <span class="field-label">Email</span>
+        <input class="field-input" type="email" placeholder="tu@email.com">
+      </div>
+      <div>
+        <span class="field-label">Cuéntanos sobre tu proyecto</span>
+        <textarea class="field-input" placeholder="¿Qué necesita tu marca en este momento?"></textarea>
+      </div>
+      <button class="btn-primary">Enviar mensaje →</button>
+    </div>
+  </div>
+
+  <dc-import name="Footer" hint-size="1440px,420px"></dc-import>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

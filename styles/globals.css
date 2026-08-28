@@ -1,0 +1,23 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  @apply bg-bg font-sans text-ink;
+}
+
+/*
+ * One focus ring for the whole site. `currentColor` rather than a token so it stays visible on
+ * every ground the design uses — ink text on cream, cream text on #212121, ink on the orange band.
+ */
+:focus-visible {
+  outline: 2px solid currentColor;
+  outline-offset: 3px;
+}
+
+@layer components {
+  /* Horizontal inset of the 1920px design: 135px desktop, scaled down responsively. */
+  .page-inset {
+    @apply px-6 md:px-12 xl:px-[135px];
+  }
+}

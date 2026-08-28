@@ -1,0 +1,180 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800;900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F6F2EA; --ink:#1E1B18;
+      --ink-70:rgba(30,27,24,.7); --ink-55:rgba(30,27,24,.55); --ink-15:rgba(30,27,24,.15); --ink-08:rgba(30,27,24,.08);
+      --accent:oklch(78% 0.15 55);
+      --display:'Bitter',Georgia,serif; --body:'Public Sans',Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0; background:var(--bg); color:var(--ink); font-family:var(--body);}
+    a{color:var(--ink);}
+    .page{width:1440px; position:relative;}
+
+    /* hero */
+    .hero{position:relative; padding:150px 64px 90px; overflow:hidden;}
+    .hero .bmark{position:absolute; right:-40px; top:-80px; font-family:var(--display); font-weight:900; font-size:520px; color:var(--ink); opacity:.045; line-height:1; pointer-events:none;}
+    .eyebrow{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-55); margin-bottom:26px;}
+    .h1{font-family:var(--display); font-weight:800; font-size:84px; line-height:1.03; max-width:1080px; letter-spacing:-.01em; position:relative;}
+    .sub{font-size:19px; line-height:1.6; color:var(--ink-70); max-width:560px; margin-top:34px; position:relative;}
+    .cta-row{display:flex; align-items:center; gap:32px; margin-top:52px; position:relative;}
+    .btn-primary{background:var(--ink); color:var(--bg); border:1px solid var(--ink); padding:16px 32px; font-family:var(--body); font-size:13px; letter-spacing:.06em; text-transform:uppercase; cursor:default;}
+    .link-secondary{font-size:14px; text-decoration:underline; text-underline-offset:4px; color:var(--ink-70);}
+
+    /* marquee */
+    .marquee{width:100%; overflow:hidden; background:var(--ink); padding:20px 0;}
+    .marquee-track{display:flex; gap:26px; white-space:nowrap; width:max-content; animation:scroll 26s linear infinite; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:var(--bg); font-family:var(--body); font-weight:500;}
+    .marquee-track span.sep{color:var(--accent);}
+    @keyframes scroll{from{transform:translateX(0);} to{transform:translateX(-50%);}}
+
+    /* section shell */
+    .section{padding:120px 64px;}
+    .section-head{display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:60px;}
+    .section-label{font-size:13px; text-transform:uppercase; letter-spacing:.14em; color:var(--ink-55);}
+    .section-title{font-family:var(--display); font-weight:700; font-size:38px; margin-top:14px; max-width:640px;}
+    .view-all{font-size:14px; text-decoration:underline; text-underline-offset:4px;}
+
+    /* work grid */
+    .work-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:56px 40px;}
+
+    /* philosophy */
+    .philosophy{background:#EFE9DD; display:grid; grid-template-columns:1.1fr 1fr; gap:80px; align-items:center;}
+    .phil-quote{font-family:var(--display); font-weight:700; font-size:36px; line-height:1.35; max-width:520px;}
+    .phil-quote em{font-style:italic; background:var(--accent); padding:0 6px;}
+    .phil-text{margin-top:28px; font-size:16px; line-height:1.7; color:var(--ink-70); max-width:480px;}
+    .mod-grid{display:grid; grid-template-columns:repeat(6,1fr); gap:7px; width:320px; justify-self:end;}
+    .mod{aspect-ratio:1;}
+    .mod-outline{border:1px solid var(--ink-15);}
+    .mod-accent{background:var(--accent);}
+    .mod-ink{background:var(--ink);}
+
+    /* services */
+    .services-row{display:grid; grid-template-columns:repeat(4,1fr); gap:0;}
+    .service-col{padding:0 32px; border-left:1px solid var(--ink-15); position:relative;}
+    .service-col:first-child{border-left:none; padding-left:0;}
+    .service-num{font-family:var(--display); font-weight:700; font-size:14px; color:var(--accent);}
+    .service-name{font-family:var(--display); font-weight:700; font-size:21px; margin-top:18px;}
+    .service-desc{font-size:14px; line-height:1.6; color:var(--ink-70); margin-top:14px;}
+
+    /* cta band */
+    .cta-band{background:var(--ink); color:var(--bg); padding:140px 64px; text-align:center;}
+    .cta-title{font-family:var(--display); font-weight:800; font-size:52px; max-width:820px; margin:0 auto; line-height:1.15;}
+    .btn-invert{margin-top:44px; background:var(--bg); color:var(--ink); border:1px solid var(--bg); padding:16px 34px; font-family:var(--body); font-size:13px; letter-spacing:.06em; text-transform:uppercase; cursor:default;}
+  </style>
+</helmet>
+<div class="page">
+  <dc-import name="Nav" active="home" hint-size="1440px,80px"></dc-import>
+
+  <div class="hero">
+    <div class="bmark">B.</div>
+    <div class="eyebrow">Estudio de marca &amp; desarrollo web</div>
+    <div class="h1">La base sólida detrás de marcas en crecimiento.</div>
+    <div class="sub">Diseñamos identidades y sistemas digitales que sostienen una marca mientras crece — sin perder coherencia en el camino.</div>
+    <div class="cta-row">
+      <button class="btn-primary">Ver trabajo →</button>
+      <span class="link-secondary">Iniciar un proyecto</span>
+    </div>
+  </div>
+
+  <div class="marquee">
+    <div class="marquee-track">
+      <span>Estrategia</span><span class="sep">·</span><span>Identidad de marca</span><span class="sep">·</span><span>Diseño digital</span><span class="sep">·</span><span>Desarrollo web</span><span class="sep">·</span><span>Sistemas visuales</span><span class="sep">·</span>
+      <span>Estrategia</span><span class="sep">·</span><span>Identidad de marca</span><span class="sep">·</span><span>Diseño digital</span><span class="sep">·</span><span>Desarrollo web</span><span class="sep">·</span><span>Sistemas visuales</span><span class="sep">·</span>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Trabajo seleccionado</div>
+        <div class="section-title">Sistemas de identidad construidos para durar.</div>
+      </div>
+      <div class="view-all">Ver todo el trabajo →</div>
+    </div>
+    <div class="work-grid">
+      <dc-import name="ProjectCard" index="01" title="[Nombre del cliente]" category="Identidad de marca" tone="ink" hint-size="100%,420px"></dc-import>
+      <dc-import name="ProjectCard" index="02" title="[Nombre del cliente]" category="Diseño web" tone="accent" hint-size="100%,420px"></dc-import>
+      <dc-import name="ProjectCard" index="03" title="[Nombre del cliente]" category="Estrategia + sistema" tone="cream" hint-size="100%,420px"></dc-import>
+      <dc-import name="ProjectCard" index="04" title="[Nombre del cliente]" category="Desarrollo web" tone="ink" hint-size="100%,420px"></dc-import>
+    </div>
+  </div>
+
+  <div class="section philosophy">
+    <div>
+      <div class="section-label">Filosofía</div>
+      <div class="phil-quote">Consistencia no es sobre <em>estética</em>. Es sobre sistemas.</div>
+      <div class="phil-text">Entendemos la identidad como una estructura en constante construcción. Tipografía, color, composición e ilustración no funcionan como piezas aisladas: son parte de un mismo sistema que conecta cada decisión visual con una lógica común.</div>
+    </div>
+    <div class="mod-grid">
+      <sc-for list="{{modules}}" as="m" hint-placeholder-count="36">
+        <div class="mod mod-{{m.tone}}"></div>
+      </sc-for>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-head">
+      <div>
+        <div class="section-label">Proceso</div>
+        <div class="section-title">Cómo construimos la base.</div>
+      </div>
+    </div>
+    <div class="services-row">
+      <div class="service-col">
+        <div class="service-num">01</div>
+        <div class="service-name">Análisis estratégico</div>
+        <div class="service-desc">Entendemos audiencia, mercado y posicionamiento antes de diseñar nada.</div>
+      </div>
+      <div class="service-col">
+        <div class="service-num">02</div>
+        <div class="service-name">Identidad de marca</div>
+        <div class="service-desc">Logotipo, sistema tipográfico, color y voz, construidos como un solo módulo.</div>
+      </div>
+      <div class="service-col">
+        <div class="service-num">03</div>
+        <div class="service-name">Diseño digital</div>
+        <div class="service-desc">Interfaces que trasladan el sistema de marca a producto y contenido.</div>
+      </div>
+      <div class="service-col">
+        <div class="service-num">04</div>
+        <div class="service-name">Desarrollo web</div>
+        <div class="service-desc">Sitios y aplicaciones construidos sobre la misma base, listos para escalar.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta-band">
+    <div class="cta-title">¿Listo para construir la base de tu marca?</div>
+    <button class="btn-invert">Hablemos</button>
+  </div>
+
+  <dc-import name="Footer" hint-size="1440px,420px"></dc-import>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() {
+    const modules = [];
+    for (let i = 0; i < 36; i++) {
+      const m = i % 9;
+      let tone = 'outline';
+      if (m === 2 || m === 7) tone = 'accent';
+      else if (m === 4) tone = 'ink';
+      modules.push({ id: i, tone });
+    }
+    return { modules };
+  }
+}
+</script>
+</body>
+</html>

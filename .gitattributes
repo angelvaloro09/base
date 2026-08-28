@@ -1,0 +1,12 @@
+# Normalise to LF in the repository. The site is built on Linux (Vercel); checking in CRLF from
+# Windows makes every file look modified to the next machine and breaks shebangs in .husky/.
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.ico binary
+*.pdf binary
+*.ttf binary
+*.woff binary
+*.woff2 binary

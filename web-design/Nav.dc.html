@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800;900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#F6F2EA; --ink:#1E1B18;
+      --ink-70:rgba(30,27,24,.7); --ink-55:rgba(30,27,24,.55); --ink-15:rgba(30,27,24,.15);
+      --accent:oklch(78% 0.15 55);
+      --display:'Bitter',Georgia,serif; --body:'Public Sans',Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    a{color:var(--ink);}
+    .navbar{
+      width:1440px; display:flex; align-items:center; justify-content:space-between;
+      padding:22px 64px; background:var(--bg); border-bottom:1px solid var(--ink-15);
+      font-family:var(--body);
+    }
+    .logo{font-family:var(--display); font-size:22px; letter-spacing:-.01em; display:flex; align-items:baseline; gap:2px;}
+    .logo b{font-weight:800;}
+    .logo span{font-family:var(--body); font-weight:300; font-size:17px; color:var(--ink);}
+    .links{display:flex; align-items:center; gap:40px;}
+    .link{font-size:13px; text-transform:uppercase; letter-spacing:.08em; padding-bottom:4px; cursor:default;}
+    .btn-outline{
+      border:1px solid var(--ink); background:transparent; color:var(--ink);
+      padding:10px 22px; font-family:var(--body); font-size:12px; letter-spacing:.08em;
+      text-transform:uppercase; cursor:default;
+    }
+  </style>
+</helmet>
+<div class="navbar">
+  <div class="logo"><b>BASE</b><span>studio.</span></div>
+  <div class="links">
+    <span class="link" style="{{workStyle}}">Work</span>
+    <span class="link" style="{{studioStyle}}">Studio</span>
+    <span class="link" style="{{contactStyle}}">Contact</span>
+    <button class="btn-outline">Iniciar proyecto</button>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{"active":{"editor":"enum","default":"home","options":["home","work","studio","contact"]}}'>
+class Component extends DCLogic {
+  renderVals() {
+    const active = this.props.active ?? 'home';
+    const style = (key) => active === key
+      ? 'color:var(--ink);border-bottom:2px solid var(--accent);'
+      : 'color:var(--ink-55);border-bottom:2px solid transparent;';
+    return {
+      workStyle: style('work'),
+      studioStyle: style('studio'),
+      contactStyle: style('contact'),
+    };
+  }
+}
+</script>
+</body>
+</html>

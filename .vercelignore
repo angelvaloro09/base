@@ -1,0 +1,11 @@
+# Design and agent sources — needed to work on the site, never needed to build it.
+assets/
+web-design/
+visual_guide_BASE.pdf
+.claude/
+.agents/
+.husky/
+CLAUDE.md
+AGENTS.md
+PLAN.md
+PLAN-phase1.md

@@ -1,0 +1,5 @@
+# `unrs-resolver` (pulled in by eslint-import-resolver-typescript) has a postinstall that selects
+# the right native binding for the platform. pnpm 10 blocks build scripts unless they are listed
+# here, and the resolver silently fails to load without it — so it stays allowed.
+allowBuilds:
+  unrs-resolver: true

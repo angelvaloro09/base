@@ -1,0 +1,63 @@
+{
+  "artboards": [
+    {
+      "file": "Main.dc.html",
+      "x": 0,
+      "y": 0,
+      "w": 1440,
+      "h": 5000,
+      "title": "Home"
+    },
+    {
+      "file": "Work.dc.html",
+      "x": 1560,
+      "y": 0,
+      "w": 1440,
+      "h": 2600,
+      "title": "Work"
+    },
+    {
+      "file": "Studio.dc.html",
+      "x": 3120,
+      "y": 0,
+      "w": 1440,
+      "h": 3000,
+      "title": "Studio"
+    },
+    {
+      "file": "Contact.dc.html",
+      "x": 4680,
+      "y": 0,
+      "w": 1440,
+      "h": 2000,
+      "title": "Contact"
+    },
+    {
+      "file": "Nav.dc.html",
+      "x": 0,
+      "y": 5150,
+      "w": 1440,
+      "h": 120,
+      "title": "Component — Nav"
+    },
+    {
+      "file": "Footer.dc.html",
+      "x": 1560,
+      "y": 5150,
+      "w": 1440,
+      "h": 520,
+      "title": "Component — Footer"
+    },
+    {
+      "file": "ProjectCard.dc.html",
+      "x": 3120,
+      "y": 5150,
+      "w": 460,
+      "h": 520,
+      "title": "Component — ProjectCard"
+    }
+  ],
+  "launch": {
+    "view": "canvas"
+  }
+}

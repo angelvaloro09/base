@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bitter:wght@400;600;700;800;900&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --ink:#1E1B18; --cream:#F6F2EA; --cream-55:rgba(246,242,234,.55); --cream-15:rgba(246,242,234,.15);
+      --accent:oklch(78% 0.15 55);
+      --display:'Bitter',Georgia,serif; --body:'Public Sans',Helvetica,Arial,sans-serif;
+    }
+    *{box-sizing:border-box;}
+    body{margin:0;}
+    a{color:var(--cream);}
+    .footer{width:1440px; background:var(--ink); color:var(--cream); font-family:var(--body); padding:100px 64px 40px;}
+    .top{display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:60px; padding-bottom:80px; border-bottom:1px solid var(--cream-15);}
+    .wordmark{font-family:var(--display); font-weight:800; font-size:56px; line-height:1;}
+    .wordmark span{font-family:var(--body); font-weight:300; font-size:40px;}
+    .tagline{margin-top:22px; max-width:360px; font-size:15px; color:var(--cream-55); line-height:1.6;}
+    .col-title{font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--cream-55); margin-bottom:18px;}
+    .col-item{font-size:15px; margin-bottom:12px; color:var(--cream);}
+    .bottom{display:flex; justify-content:space-between; align-items:center; padding-top:28px; font-size:12px; color:var(--cream-55);}
+    .dot{color:var(--accent);}
+  </style>
+</helmet>
+<div class="footer">
+  <div class="top">
+    <div>
+      <div class="wordmark">BASE<span>studio.</span></div>
+      <div class="tagline">Consistencia no es sobre estética.<br>Es sobre sistemas<span class="dot">.</span></div>
+    </div>
+    <div>
+      <div class="col-title">Sitemap</div>
+      <div class="col-item">Home</div>
+      <div class="col-item">Work</div>
+      <div class="col-item">Studio</div>
+      <div class="col-item">Contact</div>
+    </div>
+    <div>
+      <div class="col-title">Contacto</div>
+      <div class="col-item">[hola@basestudio.com]</div>
+      <div class="col-item">Instagram</div>
+      <div class="col-item">LinkedIn</div>
+    </div>
+  </div>
+  <div class="bottom">
+    <span>© 2026 BASE Studio. Todos los derechos reservados.</span>
+    <span>Diseño de marca &amp; desarrollo web</span>
+  </div>
+</div>
+</x-dc>
+<script data-dc-script data-props='{}'>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>
