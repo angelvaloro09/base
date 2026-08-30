@@ -21,3 +21,18 @@ body {
     @apply px-6 md:px-12 xl:px-[135px];
   }
 }
+
+/*
+ * Both intro skip paths, resolved before paint rather than in the component's effect — otherwise
+ * a returning visitor gets one frame of white overlay. `data-intro` is stamped by the inline
+ * script in app/layout.tsx; IntroLoader's effect then unmounts the node so the video never loads.
+ */
+html[data-intro='seen'] .intro-overlay {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-overlay {
+    display: none;
+  }
+}
