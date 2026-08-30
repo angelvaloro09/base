@@ -57,7 +57,6 @@ export default function DecorativeMark({
         'absolute',
         tone === 'ink' ? 'bg-ink' : 'bg-bg',
         driftVariant && DRIFT_CLASS[driftVariant],
-        'motion-reduce:animate-none',
         className,
       )}
       style={

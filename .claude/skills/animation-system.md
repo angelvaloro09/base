@@ -3,14 +3,19 @@
 Framer Motion patterns for BASE Studio. All animations must respect the brand's editorial register:
 purposeful, subtle, never decorative noise.
 
+> **2026-08-30:** do not gate animations on `useReducedMotion()` / `prefers-reduced-motion` — see
+> `CLAUDE.md` and `.claude/rules/accessibility.md`. That OS flag is frequently on involuntarily
+> (Windows Battery Saver disables "Animation effects" system-wide) and was silently killing every
+> animation on the site for affected visitors. Every `useReducedMotion()` / `reduced ? ... : ...`
+> branch in the code samples below is stale — animations always run regardless of that preference.
+
 ---
 
 ## Core Principles
 
 1. **Purposeful only:** animations guide attention, not distract.
 2. **Subtle defaults:** short durations (0.4–0.6s), ease-out or ease-in-out.
-3. **Reduced motion:** always check `useReducedMotion()` and disable if true.
-4. **Client boundary:** all Framer Motion components need `'use client'`.
+3. **Client boundary:** all Framer Motion components need `'use client'`.
 
 ---
 

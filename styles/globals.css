@@ -23,16 +23,15 @@ body {
 }
 
 /*
- * Both intro skip paths, resolved before paint rather than in the component's effect — otherwise
+ * Returning-visitor skip, resolved before paint rather than in the component's effect — otherwise
  * a returning visitor gets one frame of white overlay. `data-intro` is stamped by the inline
  * script in app/layout.tsx; IntroLoader's effect then unmounts the node so the video never loads.
+ *
+ * 2026-08-30: no longer also gated on `prefers-reduced-motion`. That OS flag is frequently on
+ * involuntarily (Windows Battery Saver / power-efficiency mode disables "Animation effects"
+ * system-wide), which was silently killing every animation on the site for affected visitors with
+ * no way for them to notice or undo it. See `.claude/rules/accessibility.md`.
  */
 html[data-intro='seen'] .intro-overlay {
   display: none;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .intro-overlay {
-    display: none;
-  }
 }

@@ -14,13 +14,17 @@ import { cn } from '@/lib/utils'
  *     -c:v libx264 -crf 28 -preset slow -movflags +faststart -an public/brand/intro.mp4
  *
  * The overlay's own first render is identical on the server and on the client's first pass, and
- * every conditional — session flag, reduced motion, scroll lock, listeners — runs in the effect
- * after mount. This is the same constraint documented in `sections/FadeInSection.tsx`: an element
- * whose *initial* state diverges between the two renders hydrates mismatched under React 19.
+ * every conditional — session flag, scroll lock, listeners — runs in the effect after mount. This
+ * is the same constraint documented in `sections/FadeInSection.tsx`: an element whose *initial*
+ * state diverges between the two renders hydrates mismatched under React 19.
  *
- * Returning visitors and `prefers-reduced-motion` are handled before paint by the `.intro-overlay`
- * rules in `globals.css` (driven by the inline script in `app/layout.tsx`), so they never see a
- * frame of white.
+ * Returning visitors are handled before paint by the `.intro-overlay` rule in `globals.css`
+ * (driven by the inline script in `app/layout.tsx`), so they never see a frame of white.
+ *
+ * 2026-08-30: no longer also skipped for `prefers-reduced-motion` — that OS flag is frequently on
+ * involuntarily (Windows Battery Saver / power-efficiency mode disables "Animation effects"
+ * system-wide) and was silently killing the intro, and every other animation on the site, for
+ * affected visitors. See `.claude/rules/accessibility.md`.
  */
 
 /** Matches the CSS transition below, and the safety timeout allows the 4.36s clip plus buffering. */
@@ -59,10 +63,7 @@ export default function IntroLoader() {
       // Private-mode Safari throws on access. Treat it as a first visit.
     }
 
-    const reduced =
-      typeof matchMedia === 'function' && matchMedia('(prefers-reduced-motion: reduce)').matches
-
-    if (seen || reduced) {
+    if (seen) {
       dismissedRef.current = true
       setPhase('done')
       return
@@ -84,9 +85,16 @@ export default function IntroLoader() {
     if (video) {
       // The source is attached here rather than in JSX on purpose: a `src` in the server-rendered
       // markup makes the browser download all 286 KB before this effect can decide the intro is
-      // not wanted, so returning visitors and reduced-motion visitors would pay for a video they
-      // never see. Autoplay can also still be refused (data saver, low power mode) — drop the
-      // overlay if it is.
+      // not wanted, so a returning visitor would pay for a video they never see. Autoplay can also
+      // still be refused (data saver, low power mode) — drop the overlay if it is.
+      //
+      // `muted` set imperatively here too, not just via the JSX prop: React does not emit the
+      // `muted` attribute in server-rendered markup (facebook/react#10389), and on some browsers
+      // the DOM property isn't reliably synced from the JSX boolean by the time this effect runs.
+      // Without it read back as `true`, the autoplay policy rejects `.play()` with
+      // `NotAllowedError` and the whole intro silently disappears — on affected browsers only,
+      // which is why this only reproduces on some computers.
+      video.muted = true
       video.src = SRC
       video.play().catch(dismiss)
     }

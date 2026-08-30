@@ -34,8 +34,10 @@
 ## Animation (Framer Motion)
 
 - All Framer Motion in `'use client'` components.
-- Always call `useReducedMotion()` and skip animation if true.
-- Wrap CSS marquee with `@media (prefers-reduced-motion: reduce) { animation: none }`.
+- Do not gate animations on `useReducedMotion()` / `prefers-reduced-motion` (retired
+  2026-08-30 — killed the intro loader and every animation for visitors whose OS had the flag on
+  involuntarily, e.g. Windows Battery Saver). Animations always run.
+- Marquee is retired site-wide — do not reintroduce it, with or without a motion query.
 
 ## Forms
 

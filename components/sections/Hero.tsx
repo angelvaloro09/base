@@ -54,7 +54,7 @@ export default function Hero() {
             width={1899}
             height={1533}
             priority
-            className="h-auto w-[70%] max-w-[320px] animate-float object-contain motion-reduce:animate-none md:ml-[17.9%] md:mt-[10.4%] md:w-[64.7%] md:max-w-none"
+            className="h-auto w-[70%] max-w-[320px] animate-float object-contain md:ml-[17.9%] md:mt-[10.4%] md:w-[64.7%] md:max-w-none"
           />
         </div>
       </div>

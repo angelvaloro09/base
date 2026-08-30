@@ -56,9 +56,8 @@ import { urlFor } from '@/sanity/lib/image' // for Sanity images
 
 ### Animation
 
-```tsx
-const reduced = useReducedMotion() // always check — skip if true
-```
+Do not gate animations on `useReducedMotion()` / `prefers-reduced-motion` (retired 2026-08-30 —
+see `CLAUDE.md`). Animations always run.
 
 ### Forms
 

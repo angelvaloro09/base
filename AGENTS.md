@@ -65,7 +65,8 @@ Home page section order (Figma node → size at 1920 design width):
 - **Images** always use `next/image`. Never raw `<img>`.
 - **Classes** via `cn()` (clsx + tailwind-merge). No inline `style={{}}`.
 - **TypeScript strict.** No `any`. All Sanity responses must be typed.
-- **Animation:** Framer Motion in client components. Always check `useReducedMotion()`.
+- **Animation:** Framer Motion in client components. Do not gate on `useReducedMotion()` /
+  `prefers-reduced-motion` (retired 2026-08-30 — see `CLAUDE.md`). Animations always run.
 - **Form submission:** Zod validation → `app/api/contact/route.ts` → Resend.
 - **Pre-commit:** Husky runs ESLint + Prettier. Fix all errors before committing.
 

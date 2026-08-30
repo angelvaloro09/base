@@ -243,7 +243,11 @@ ported from the old comps.
 
 - All motion components must be in Client Components.
 - Standard entrance: `y: 20 → 0, opacity: 0 → 1, duration: 0.5`.
-- Always check `useReducedMotion()` and skip animation if true.
+- **Do not gate animations on `useReducedMotion()` / `prefers-reduced-motion` (retired
+  2026-08-30).** That OS flag is frequently on involuntarily — Windows Battery Saver /
+  power-efficiency mode disables "Animation effects" system-wide — and doing so was silently
+  killing the intro loader and every other animation on the site for affected visitors. Animations
+  always run. See `.claude/rules/accessibility.md`.
 - Marquee: retired 2026-08-27 — not part of the current design. Do not reintroduce it.
 - Wrap page sections in a reusable `<FadeInSection>` client component.
 - Page transitions: `AnimatePresence` at layout level.

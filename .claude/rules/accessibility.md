@@ -73,16 +73,17 @@
 
 ## Animations & Motion
 
-- Always use `useReducedMotion()` from Framer Motion.
-- If `prefersReducedMotion` is true, skip all animations (no fade, no slide, no marquee motion).
-- The CSS marquee must be pauseable on hover and stopped for `prefers-reduced-motion`:
-  ```css
-  @media (prefers-reduced-motion: reduce) {
-    .animate-marquee {
-      animation: none;
-    }
-  }
-  ```
+> **Changed 2026-08-30.** Previously this rule required gating every animation on
+> `prefers-reduced-motion` (`useReducedMotion()`, `motion-reduce:*`, the CSS media query). Retired:
+> that OS flag was found to be frequently on involuntarily — Windows Battery Saver / power-efficiency
+> mode disables "Animation effects" system-wide on many laptops without the user asking for it —
+> which was silently killing the intro loader and every other site animation for affected visitors,
+> with no way for them to notice or undo it. Do not reintroduce a `prefers-reduced-motion` /
+> `useReducedMotion()` / `motion-reduce:` gate on any animation, transition, or the intro loader.
+> Animations always run.
+
+- The marquee pattern is retired site-wide (see `CLAUDE.md`) — not part of the current design
+  regardless of motion preference.
 
 ## Heading Hierarchy
 

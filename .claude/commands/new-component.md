@@ -56,7 +56,7 @@ export default function [ComponentName]({ className, ...props }: Props) {
 ```tsx
 // components/[category]/[ComponentName].tsx
 'use client'
-import { motion, useReducedMotion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 type Props = {
@@ -65,12 +65,10 @@ type Props = {
 }
 
 export default function [ComponentName]({ className, ...props }: Props) {
-  const reduced = useReducedMotion()
-
   return (
     <motion.div
       className={cn('base-classes', className)}
-      initial={reduced ? false : { opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: 'easeOut' }}
     >
@@ -153,6 +151,6 @@ font-display  font-sans
 - [ ] No inline `style={{}}`
 - [ ] No raw `<img>` (use `next/image`)
 - [ ] `'use client'` only if strictly needed
-- [ ] Animation respects `useReducedMotion()`
+- [ ] Animation does NOT gate on `useReducedMotion()` / `prefers-reduced-motion` (retired 2026-08-30)
 - [ ] Color values use design tokens only
 - [ ] Copy/labels are English and editorial in tone

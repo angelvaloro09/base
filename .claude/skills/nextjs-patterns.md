@@ -44,7 +44,7 @@ export default async function WorkPage() {
 // components/sections/ChaosSection.tsx
 ;('use client')
 export default function ChaosSection() {
-  /* drifting particle marks — useReducedMotion() gated */
+  /* drifting particle marks — always animated, not reduced-motion gated (retired 2026-08-30) */
 }
 ```
 

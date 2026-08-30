@@ -78,7 +78,7 @@ Run each check against the target file/text and report the result.
 - [ ] No raw `<img>` (uses `next/image`); decorative marks use `alt="" role="presentation"`.
 - [ ] No `any` TypeScript type.
 - [ ] Client components have `'use client'` only if truly needed.
-- [ ] Animations check `useReducedMotion()`.
+- [ ] Animations do NOT check `useReducedMotion()` / `prefers-reduced-motion` (retired 2026-08-30).
 
 ---
 

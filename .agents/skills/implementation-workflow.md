@@ -34,7 +34,7 @@ never the whole home page at once. Each prompt tells you:
 - **Self-check before reporting**, against whatever the prompt names (typically: colors only from
   tokens, Merriweather headings + Space Grotesk body, buttons match the three variants,
   accessibility basics —
-  alt text, semantic elements, focus states, `useReducedMotion()` — no `any`, no inline
+  alt text, semantic elements, focus states — no `any`, no inline
   `style={{}}` outside a documented one-off exception, `next/image` not `<img>`).
 - **Run the verification commands the prompt asks for** and only report success if they actually
   pass — don't assume.
