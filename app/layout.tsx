@@ -23,6 +23,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="es">
       <body className={`${spaceGrotesk.variable} ${merriweather.variable} font-sans antialiased`}>
+        {/*
+         * Runs before first paint so a returning visitor never sees a frame of the intro overlay
+         * (see components/ui/IntroLoader.tsx). It only stamps an attribute on <html>, which is
+         * outside React's owned markup and so cannot hydrate mismatched. The matching hide rule
+         * lives in styles/globals.css.
+         */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `try{if(sessionStorage.getItem('base-intro')==='1')document.documentElement.dataset.intro='seen'}catch(e){}`,
+          }}
+        />
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-4 focus:py-2 focus:text-bg"

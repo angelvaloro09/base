@@ -7,10 +7,12 @@ import OrderSection from '@/components/sections/OrderSection'
 import ServicesSection from '@/components/sections/ServicesSection'
 import CaseStudiesSection from '@/components/sections/CaseStudiesSection'
 import FadeInSection from '@/components/sections/FadeInSection'
+import IntroLoader from '@/components/ui/IntroLoader'
 
 export default function Page() {
   return (
     <>
+      <IntroLoader />
       <Hero />
       <FadeInSection>
         <ProblemSection />
